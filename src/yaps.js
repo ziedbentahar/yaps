@@ -49,7 +49,7 @@
       }
     }
 
-    function handleRegexpSubriber(subscriber) {
+    function handleRegExpSubscriber(subscriber) {
       for (var prop in subscription) {
         if (subscription.hasOwnProperty(prop) &&
         prop.match(subscriber.match) &&
@@ -76,7 +76,7 @@
         }
 
         for (var s = 0; s < regexpSubscibers.length ; s++) {
-          handleRegexpSubriber(regexpSubscibers[s]);
+          handleRegExpSubscriber(regexpSubscibers[s]);
         }
       },
 
@@ -91,7 +91,7 @@
 
         if (channel instanceof RegExp) {
           regexpSubscibers.push(subscriber);
-          handleRegexpSubriber(subscriber);
+          handleRegExpSubscriber(subscriber);
         } else {
           handleSubscriber(channel, subscriber);
         }
