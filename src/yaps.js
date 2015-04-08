@@ -43,7 +43,7 @@
     }
     subscription[channel].push(subscriber);
 
-    if (lastvalue[channel] !== 'undefined') {
+    if (lastvalue[channel] !== undefined) {
       notify(subscriber.handler, lastvalue[channel],
         subscriber.async);
       }
@@ -60,14 +60,16 @@
     }
 
     return {
-      'pub': function(channel, data, lastValueCache) {
+
+
+      pub: function(channel, data, lastValueCache) {
 
         if(lastValueCache === true)
           lastvalue[channel] = data;
 
         var subs = subscription[channel];
 
-        if (subs !== 'undefined') {
+        if (subs !== undefined) {
           for (var i = 0; i < subs.length; i++) {
             notify(subs[i].handler, data, subs[i].async);
           }
@@ -80,7 +82,7 @@
         }
       },
 
-      'sub': function(channel, evtHandler, async) {
+      sub: function(channel, evtHandler, async) {
 
         var subscriber = {
           id: 'subid_' + (++handlerId),
